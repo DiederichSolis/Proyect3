@@ -1,0 +1,37 @@
+q_states:
+  q_list: ["q0", "q1", "q2", "qf"]
+  initial: "q0"
+  final: "qf"
+
+alphabet: ["a", "b"]
+
+tape_alphabet: ["a", "b", "_"]
+
+delta:
+  - params:
+      initial_state: "q0"
+      tape_input: "a"
+    output:
+      final_state: "q1"
+      tape_output: "X"
+      tape_displacement: "R"
+  - params:
+      initial_state: "q1"
+      tape_input: "b"
+    output:
+      final_state: "q2"
+      tape_output: "Y"
+      tape_displacement: "R"
+  - params:
+      initial_state: "q2"
+      tape_input: "_"
+    output:
+      final_state: "qf"
+      tape_output: "_"
+      tape_displacement: "N"
+
+simulation_strings:
+  - "ab"
+  - "aabb"
+  - "abb"
+  - "aaabb"

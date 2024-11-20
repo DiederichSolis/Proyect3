@@ -23,7 +23,6 @@ class MaquinaDeTuring:
         self.cinta = []
         self.posicion_cabeza = 0
 
-    
     def reiniciar(self, cadena_entrada):
         # Inicializar cinta y posición de la cabeza de lectura
         self.cinta = list(cadena_entrada) + ["_"]
@@ -56,6 +55,7 @@ class MaquinaDeTuring:
         elif self.posicion_cabeza >= len(self.cinta):
             self.cinta.append("_")
         return True
+
     def ejecutar(self, cadena_entrada):
         self.reiniciar(cadena_entrada)
         print(f"Configuración inicial: {self.obtener_configuracion()}")
@@ -76,12 +76,11 @@ class MaquinaDeTuring:
         return f"Cinta: {cinta_str}\nCabeza: {marcador_cabeza}\nEstado: {self.estado_actual}"
 
 
-    def cargar_configuracion(ruta_archivo):
-        # Cargar archivo YAML
-        with open(ruta_archivo, "r") as archivo:
-            return yaml.safe_load(archivo)
-        
-    
+def cargar_configuracion(ruta_archivo):
+    # Cargar archivo YAML
+    with open(ruta_archivo, "r") as archivo:
+        return yaml.safe_load(archivo)
+
 
 if __name__ == "__main__":
     # Ruta del archivo YAML
@@ -98,6 +97,3 @@ if __name__ == "__main__":
         print(f"\nEjecutando entrada: {cadena_entrada}")
         resultado = mt.ejecutar(cadena_entrada)
         print(f"Resultado: {resultado}\n")
-
-
-   
