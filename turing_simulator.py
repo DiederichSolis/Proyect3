@@ -56,6 +56,31 @@ class MaquinaDeTuring:
         elif self.posicion_cabeza >= len(self.cinta):
             self.cinta.append("_")
         return True
+    def ejecutar(self, cadena_entrada):
+        self.reiniciar(cadena_entrada)
+        print(f"Configuración inicial: {self.obtener_configuracion()}")
+
+        while self.estado_actual != self.estado_final:
+            if not self.ejecutar_paso():
+                print("No se encontró una transición válida. Entrada rechazada.")
+                return "Rechazada"
+            print(f"Configuración actual: {self.obtener_configuracion()}")
+
+        print("Entrada aceptada.")
+        return "Aceptada"
+
+    def obtener_configuracion(self):
+        # Devuelve la configuración instantánea (ID)
+        cinta_str = "".join(self.cinta)
+        marcador_cabeza = " " * self.posicion_cabeza + "^"
+        return f"Cinta: {cinta_str}\nCabeza: {marcador_cabeza}\nEstado: {self.estado_actual}"
+
+
+    def cargar_configuracion(ruta_archivo):
+        # Cargar archivo YAML
+        with open(ruta_archivo, "r") as archivo:
+            return yaml.safe_load(archivo)
+
 
 
    
