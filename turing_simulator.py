@@ -23,4 +23,11 @@ class MaquinaDeTuring:
         self.cinta = []
         self.posicion_cabeza = 0
 
+    
+    def reiniciar(self, cadena_entrada):
+        # Inicializar cinta y posición de la cabeza de lectura
+        self.cinta = list(cadena_entrada) + ["_"]
+        self.estado_actual = self.estado_inicial
+        self.posicion_cabeza = 0
+
    
