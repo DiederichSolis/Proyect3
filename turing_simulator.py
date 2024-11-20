@@ -80,7 +80,24 @@ class MaquinaDeTuring:
         # Cargar archivo YAML
         with open(ruta_archivo, "r") as archivo:
             return yaml.safe_load(archivo)
+        
+    
 
+if __name__ == "__main__":
+    # Ruta del archivo YAML
+    archivo_yaml = "mt_config.yaml"  # Cambia este nombre por el de tu archivo YAML
+
+    # Cargar configuración de la Máquina de Turing
+    configuracion = cargar_configuracion(archivo_yaml)
+
+    # Crear una instancia de la Máquina de Turing
+    mt = MaquinaDeTuring(configuracion)
+
+    # Ejecutar las cadenas de prueba
+    for cadena_entrada in configuracion["simulation_strings"]:
+        print(f"\nEjecutando entrada: {cadena_entrada}")
+        resultado = mt.ejecutar(cadena_entrada)
+        print(f"Resultado: {resultado}\n")
 
 
    
