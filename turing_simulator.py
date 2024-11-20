@@ -30,4 +30,32 @@ class MaquinaDeTuring:
         self.estado_actual = self.estado_inicial
         self.posicion_cabeza = 0
 
+    def ejecutar_paso(self):
+        # Obtener el símbolo actual bajo la cabeza de lectura
+        simbolo_actual = self.cinta[self.posicion_cabeza]
+
+        # Buscar la transición correspondiente
+        clave = (self.estado_actual, simbolo_actual)
+        if clave not in self.transiciones:
+            return False  # No hay transición válida
+
+        nuevo_estado, simbolo_escribir, movimiento = self.transiciones[clave]
+
+        # Actualizar cinta, estado y posición de la cabeza
+        self.cinta[self.posicion_cabeza] = simbolo_escribir
+        self.estado_actual = nuevo_estado
+        if movimiento == "R":
+            self.posicion_cabeza += 1
+        elif movimiento == "L":
+            self.posicion_cabeza -= 1
+
+        # Asegurar que la cabeza no salga de los límites de la cinta
+        if self.posicion_cabeza < 0:
+            self.cinta.insert(0, "_")
+            self.posicion_cabeza = 0
+        elif self.posicion_cabeza >= len(self.cinta):
+            self.cinta.append("_")
+        return True
+
+
    
