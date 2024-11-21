@@ -1,5 +1,3 @@
-import yaml
-
 class TuringMachine:
     def __init__(self, config):
         """
@@ -84,36 +82,6 @@ class TuringMachine:
                     tape.append('_')
             elif transition['tape_displacement'] == 'L':
                 head_position = max(0, head_position - 1)
-
-def load_turing_machine_config(yaml_file):
-    """
-    Cargar configuración de Máquina de Turing desde archivo YAML
-    """
-    with open(yaml_file, 'r') as file:
-        config = yaml.safe_load(file)
-    return config
-
-def main(yaml_file):
-    """
-    Función principal para simular Máquinas de Turing
-    """
-    # Cargar configuración
-    config = load_turing_machine_config(yaml_file)
-    
-    # Crear Máquina de Turing
-    tm = TuringMachine(config)
-    
-    # Simular cada cadena de entrada
-    for input_string in config['simulation_strings']:
-        print(f"\nSimulando cadena: {input_string}")
-        result = tm.simulate(input_string)
-        
-        print(f"Resultado: {result['result']}")
-        print("Descripciones Instantáneas:")
-        for idx, id_desc in enumerate(result['ids'], 1):
-            print(f"ID {idx}: Estado {id_desc['state']}, "
-                  f"Cinta: {''.join(id_desc['tape'])}, "
-                  f"Posición Cabezal: {id_desc['head_position']}")
-
-if __name__ == "__main__":
-    main("mt_config.yaml")
+            elif transition['tape_displacement'] == 'N':
+                # No movement
+                pass

@@ -1,13 +1,13 @@
 q_states:
-  q_list: ["q0", "q1", "q2", "qf"]
+  q_list: ["q0", "q1", "q2", "q3", "qf"]
   initial: "q0"
   final: "qf"
 
 alphabet: ["a", "b"]
-
-tape_alphabet: ["a", "b", "_"]
+tape_alphabet: ["a", "b", "X", "Y", "_"]
 
 delta:
+  # Transición inicial: primera 'a'
   - params:
       initial_state: "q0"
       tape_input: "a"
@@ -15,6 +15,17 @@ delta:
       final_state: "q1"
       tape_output: "X"
       tape_displacement: "R"
+  
+  # Transición en q1: manejar más 'a'
+  - params:
+      initial_state: "q1"
+      tape_input: "a"
+    output:
+      final_state: "q1"
+      tape_output: "X"
+      tape_displacement: "R"
+  
+  # Transición en q1: primer 'b'
   - params:
       initial_state: "q1"
       tape_input: "b"
@@ -22,6 +33,17 @@ delta:
       final_state: "q2"
       tape_output: "Y"
       tape_displacement: "R"
+  
+  # Transición en q2: más 'b'
+  - params:
+      initial_state: "q2"
+      tape_input: "b"
+    output:
+      final_state: "q2"
+      tape_output: "Y"
+      tape_displacement: "R"
+  
+  # Transición final: llegar al blank
   - params:
       initial_state: "q2"
       tape_input: "_"
@@ -32,6 +54,6 @@ delta:
 
 simulation_strings:
   - "ab"
-  - "aabb"
+  - "caab"
   - "abb"
-  - "aaabb"
+  - "ab_"
