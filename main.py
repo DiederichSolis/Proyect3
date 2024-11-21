@@ -28,4 +28,11 @@ def main(yaml_file):
                   f"Posición Cabezal: {id_desc['head_position']}")
 
 if __name__ == "__main__":
-    main("mt_config.yaml")
+
+    op = input("que tipo de máquina desea ejecutar? (1. Normal) (2. Alteradora): ")
+    
+    if(op=="1"):
+        main("mt_config.yaml")
+    else:
+        main("mt_config_alteradora.yaml")
+    

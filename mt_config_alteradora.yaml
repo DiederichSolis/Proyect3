@@ -1,0 +1,41 @@
+q_states:
+  q_list: ["q0", "q1", "qf"]
+  initial: "q0"
+  final: "qf"
+
+alphabet: ["a", "b"]
+tape_alphabet: ["a", "b", "X", "Y", "_"]
+
+delta:
+  # Cambiar 'a' por 'b' y moverse a la derecha
+  - params:
+      initial_state: "q0"
+      tape_input: "a"
+    output:
+      final_state: "q0"
+      tape_output: "b"
+      tape_displacement: "R"
+  
+  # Cambiar 'b' por 'a' y moverse a la derecha
+  - params:
+      initial_state: "q0"
+      tape_input: "b"
+    output:
+      final_state: "q0"
+      tape_output: "a"
+      tape_displacement: "R"
+  
+  # Al encontrar un blank, ir al estado final
+  - params:
+      initial_state: "q0"
+      tape_input: "_"
+    output:
+      final_state: "qf"
+      tape_output: "_"
+      tape_displacement: "N"
+
+simulation_strings:
+  - "ababa"       # Se convertirá en "babab"
+  - "aaabbb"      # Se convertirá en "bbbaaa"
+  - "abbabb"      # Se convertirá en "baabaa"
+  - "bbbaaab"     # Se convertirá en "aaabbba"

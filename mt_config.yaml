@@ -53,7 +53,7 @@ delta:
       tape_displacement: "N"
 
 simulation_strings:
-  - "ab"
-  - "caab"
-  - "abb"
-  - "ab_"
+  - "aabbbb"
+  - "aaabbbbb"
+  - "abcdef"
+  - "baaaaa"
