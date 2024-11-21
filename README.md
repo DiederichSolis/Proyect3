@@ -16,7 +16,7 @@ RUNNING PROJECT
 VIEW
 - link del video: 
 ```
-[https://youtu.be/__KN2pkEsnc](https://youtu.be/ZLufOFv19O8)
+https://youtu.be/__KN2pkEsnc](https://youtu.be/ZLufOFv19O8
 ```
 
 
